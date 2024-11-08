@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './main.css'
 import img from '../../Assets/hotel-view1.jpg'
 import img1 from '../../Assets/hotel-view2.jpg'
@@ -6,9 +6,8 @@ import img2 from '../../Assets/hotel-swimmingpool1.jpg'
 import img3 from '../../Assets/hotel-swimmingpool2.jpg'
 import img4 from '../../Assets/hotel-swimmingpool3.jpg'
 import img5 from '../../Assets/hotel-swimmingpool4.jpg'
-
-
-
+import Aos, { init } from 'aos';
+import 'aos/dist/aos.css'
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { HiOutlineClipboardCheck } from "react-icons/hi";
 
@@ -152,10 +151,14 @@ const Data = [
 ]
 
 const Main = () => {
+    useEffect(() =>{
+        Aos.init({duration: 2000})
+    }, [])
+
     return (
         <section className='main container section'>
             <div className="secTitle">
-                <h3 className="title">Most visited destinations</h3>
+                <h3 data-aos="fade-right" className="title">Most visited destinations</h3>
             </div>
 
             <div className="secContent grid">
@@ -163,7 +166,7 @@ const Main = () => {
                     Data.map(({id, imgSrc, destTitle, Address, location, grade, ratings, fees, phone,
                         CheckIn, CheckOut, description, overview}) => {
                             return(
-                                <div key={id} className="singleDestination">
+                                <div data-aos="fade-up" key={id} className="singleDestination">
                                     <div className="imageDiv">
                                         <img src={imgSrc} alt={destTitle}></img>
                                     </div>
