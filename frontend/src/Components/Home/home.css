@@ -43,7 +43,7 @@
   width: 100%;
   height: -moz-max-content;
   height: max-content;
-  padding: 8rem 1.5rem 3rem;
+  padding: 7rem 1.5rem 3rem;
   display: flex;
   row-gap: 3rem;
   flex-direction: column;
@@ -54,7 +54,7 @@
   z-index: 100;
 }
 .home .homeContent .textDiv {
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 .home .homeContent .textDiv .smallText {
   font-size: 13px;
@@ -86,6 +86,110 @@
   color: var(--textColor);
   font-size: 18px;
   padding-bottom: 10px;
+}
+.home .homeContent .cardDiv .search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+@media (min-width: 768px) {
+  .home .homeContent .cardDiv .search-bar {
+    flex-wrap: nowrap;
+  }
+}
+.home .homeContent .cardDiv .search-bar input[type=text] {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  width: -moz-max-content;
+  width: max-content;
+}
+.home .homeContent .cardDiv .search-bar input[type=text]:focus {
+  outline: none;
+  border-color: var(--PrimaryColor);
+}
+.home .homeContent .cardDiv .date-picker {
+  position: relative;
+}
+.home .homeContent .cardDiv .date-picker input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.home .homeContent .cardDiv .date-picker .date-picker-popup {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.home .homeContent .cardDiv .date-picker .date-picker-popup .close-button {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #888;
+}
+.home .homeContent .cardDiv .date-picker .date-picker-popup .date-picker-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+}
+.home .homeContent .cardDiv .date-picker .date-picker-popup .react-datepicker {
+  font-size: 14px;
+}
+.home .homeContent .cardDiv .guest-selector {
+  position: relative;
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-radius: 8px;
+  z-index: 10;
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup button {
+  color: #9b9a9a;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup button:hover {
+  opacity: 3;
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup span {
+  color: var(--textColor);
+  font-size: 16px;
+}
+.home .homeContent .cardDiv .SearchOption {
+  color: var(--whiteColor);
+  font-size: 1rem;
 }
 .home .homeContent .cardDiv .input {
   height: 40px;
