@@ -72,11 +72,13 @@
   padding: 1rem;
 }
 .main .secContent .singleDestination .cardInfo .destTitle {
+  cursor: pointer;
   color: var(--blackColor);
   font-size: 1.25rem;
 }
 .main .secContent .singleDestination .cardInfo .continent {
   gap: 0.5rem;
+  cursor: pointer;
 }
 .main .secContent .singleDestination .cardInfo .continent .icon {
   color: var(--textColor);
@@ -120,6 +122,25 @@
   color: var(--textColor);
   font-weight: 500;
 }
+.main .secContent .singleDestination .cardInfo .hotelType {
+  cursor: pointer;
+  gap: 0.5rem;
+}
+.main .secContent .singleDestination .cardInfo .hotelType .icon {
+  color: var(--textColor);
+  font-size: 18px;
+}
+.main .secContent .singleDestination .cardInfo .ratings {
+  cursor: pointer;
+}
+.main .secContent .singleDestination .cardInfo .ratings small {
+  text-align: center;
+  background: var(--gradientColor);
+  border-radius: 1rem;
+  color: var(--whiteColor);
+  padding: 1px 10px;
+  font-size: 10px;
+}
 .main .secContent .singleDestination .cardInfo .btn {
   margin-top: 1rem;
   color: var(--whiteColor);
@@ -130,6 +151,32 @@
 .main .secContent .singleDestination .cardInfo .btn .icon {
   align-self: center;
   font-size: 18px;
+}
+.main .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+.main .pagination button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: hsl(187, 85%, 43%);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.main .pagination button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+.main .pagination span {
+  font-size: 16px;
+  color: #333;
 }
 
 @media screen and (min-width: 500px) {

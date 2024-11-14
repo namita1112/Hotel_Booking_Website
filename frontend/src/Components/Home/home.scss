@@ -44,7 +44,7 @@
     .homeContent {
         width: 100%;
         height: max-content;
-        padding: 8rem 1.5rem 3rem;
+        padding: 7rem 1.5rem 3rem;
         display: flex;
         row-gap: 3rem;
         flex-direction: column;
@@ -55,7 +55,7 @@
         z-index: 100;
 
         .textDiv {
-            padding: 2rem 0;
+            padding: 1rem 0;
 
             .smallText {
                 font-size: 13px;
@@ -93,6 +93,209 @@
                     font-size: 18px;
                     padding-bottom: 10px;
                 }
+            }
+
+            .search-bar {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: space-between;
+                align-items: center;
+                margin: 20px 0;
+
+                @media (min-width: 768px) {
+                    flex-wrap: nowrap;
+                }
+
+                input[type="text"] {
+                    padding: 10px;
+                    border: 1px solid #ddd;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    width: max-content;
+            
+                    &:focus {
+                        outline: none;
+                        border-color: var(--PrimaryColor);
+                    }
+                }
+            }
+
+
+            // .date-picker {
+            //     position: relative;
+            
+            //     .date-picker-popup {
+            //         // display: flex;
+            //         // gap: 10px;
+            //         // position: absolute;
+            //         // top: 100%;
+            //         // left: 0;
+            //         // background: #fff;
+            //         // border: 1px solid #ddd;
+            //         // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            //         // padding: 15px;
+            //         // z-index: 10;
+            //         // display: flex;
+            //         // gap: 10px;
+            //         // border-radius: 8px;
+            //         display: flex;
+            //         gap: 10px; // Adds space between the two date pickers
+            //         position: absolute;
+            //         top: 40px; // Adjusts the popup position below the input field
+            //         background-color: white;
+            //         padding: 10px;
+            //         border: 1px solid #ddd;
+            //         border-radius: 5px;
+            //         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            //         z-index: 100;
+            
+            //         input {
+            //             // border-radius: 8px;
+            //             // padding: 10px;
+            //             // border: 1px solid #ddd;
+            //             // font-size: 14px;
+            //             // width: 120px;
+
+            //             width: 100%;
+            //             padding: 8px 12px;
+            //             border: 1px solid #ddd;
+            //             border-radius: 5px;
+            //             cursor: pointer;
+            
+            //             &:focus {
+            //                 border-color: #007bff;
+            //             }
+            //         }
+            
+            //         button {
+            //             // background: var(--greyText);
+            //             // color: #9b9a9a;
+            //             // border: none;
+            //             // border-radius: 50%;
+            //             // width: 24px;
+            //             // height: 24px;
+            //             // cursor: pointer;
+            //             // font-weight: bold;
+
+            //             position: absolute;
+            //             top: 5px;
+            //             right: 5px;
+            //             background: none;
+            //             border: none;
+            //             cursor: pointer;
+            //             font-size: 16px;
+            //             color: #888;
+            
+            //             &:hover {
+            //                 opacity: 2;
+            //                 // background: var(--greyText);
+            //             }
+            //         }
+            //     }
+            // }
+
+            .date-picker {
+                // display: flex;
+                // justify-content: space-between;
+                position: relative;
+                // width: 50px;
+              
+                input {
+                  width: 100%;
+                  padding: 8px 12px;
+                  border: 1px solid #ddd;
+                  border-radius: 5px;
+                  cursor: pointer;
+                }
+              
+                .date-picker-popup {
+                    position: absolute;
+                    top: 50px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: white;
+                    padding: 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+                    z-index: 100;
+                    width: 550px; // Ensure enough space for both date pickers
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+              
+                  .close-button {
+                    align-self: flex-end;
+                    background: none;
+                    border: none;
+                    font-size: 16px;
+                    cursor: pointer;
+                    color: #888;
+                  }
+              
+                  .date-picker-container {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    gap: 20px; // Adds space between the two date pickers
+                  }
+              
+                  .react-datepicker {
+                    // Add any additional styling specific to DatePicker library here
+                    font-size: 14px;
+                  }
+                }
+            }
+
+            
+                
+
+            .guest-selector {
+                position: relative;
+            
+                .guest-selector-popup {
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    background: #fff;
+                    border: 1px solid #ddd;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    padding: 10px;
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    border-radius: 8px;
+                    z-index: 10;
+            
+                    button {
+                        // background: #9b9a9a;
+                        color: #9b9a9a;
+                        border: none;
+                        border-radius: 50%;
+                        width: 24px;
+                        height: 24px;
+                        cursor: pointer;
+                        font-weight: bold;
+            
+                        &:hover {
+                            opacity: 3;
+                            // background: #0056b3;
+                        }
+                    }
+            
+                    span {
+                        color: var(--textColor);
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .SearchOption{
+                color: var(--whiteColor);
+                font-size: 1rem;
+                // background-color: var(--PrimaryColor);
+                // padding: .5rem 1rem;
+                // border-radius: 10px;
             }
 
             .input{
