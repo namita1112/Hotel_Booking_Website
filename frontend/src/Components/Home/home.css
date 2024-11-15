@@ -105,8 +105,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 14px;
-  width: -moz-max-content;
-  width: max-content;
+  width: 260px;
 }
 .home .homeContent .cardDiv .search-bar input[type=text]:focus {
   outline: none;
@@ -157,35 +156,98 @@
 .home .homeContent .cardDiv .guest-selector {
   position: relative;
 }
+.home .homeContent .cardDiv .guest-selector input {
+  width: -moz-max-content;
+  width: max-content;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
 .home .homeContent .cardDiv .guest-selector .guest-selector-popup {
   position: absolute;
-  top: 100%;
-  left: 0;
-  background: #fff;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  border-radius: 8px;
-  z-index: 10;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  width: 400px;
 }
-.home .homeContent .cardDiv .guest-selector .guest-selector-popup button {
-  color: #9b9a9a;
-  border: none;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup .guest-selector-label {
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup .guest-selector-label .counter {
+  width: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup .guest-selector-label .counter label {
   font-weight: bold;
 }
-.home .homeContent .cardDiv .guest-selector .guest-selector-popup button:hover {
-  opacity: 3;
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup .guest-selector-label .counter .button-group {
+  cursor: pointer;
 }
-.home .homeContent .cardDiv .guest-selector .guest-selector-popup span {
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup .guest-selector-label .counter button {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup .guest-selector-label .counter span {
   color: var(--textColor);
+  width: 20px;
   font-size: 16px;
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup hr {
+  margin: 15px 0;
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup .toggle {
+  justify-content: space-between;
+  align-items: center;
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup .toggle .petsInput {
+  width: 3rem;
+  margin-bottom: 9px;
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup .toggle label {
+  font-weight: bold;
+  flex: 1;
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup .toggle input[type=checkbox] {
+  float: left;
+  transform: scale(1.2);
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup .note {
+  font-size: 12px;
+  color: #666;
+  margin: 10px 0;
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup .note a {
+  color: #0073e6;
+  text-decoration: underline;
+}
+.home .homeContent .cardDiv .guest-selector .guest-selector-popup .done-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
 }
 .home .homeContent .cardDiv .SearchOption {
   color: var(--whiteColor);

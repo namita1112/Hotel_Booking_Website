@@ -17,11 +17,24 @@ const Home = () => {
     const [checkOutDate, setCheckOutDate] = useState(null);
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showGuestSelector, setShowGuestSelector] = useState(false);
+    const [adults, setAdults] = useState(2);
+    const [children, setChildren] = useState(0);
+    const [rooms, setRooms] = useState(1);
+    const [withPets, setWithPets] = useState(false);
     const [guests, setGuests] = useState(1);
 
     const datePickerRef = useRef(null);
 
     const guestDiv = useRef(null);
+
+    const toggleGuestSelector = () => {
+        setShowGuestSelector(!showGuestSelector);
+    };
+
+    const handleDone = () => {
+        setShowGuestSelector(false);
+    };
+
 
     useEffect(() => {
         Aos.init({ duration: 2000 });
@@ -63,10 +76,10 @@ const Home = () => {
             <div className="homeContent container">
                 <div className="textDiv">
                     <span data-aos="fade-up" className="smallText">
-                        Our Packages
+                        Our Hotels
                     </span>
                     <h1 data-aos="fade-up" className="homeTitle">
-                        Search Your Holidays
+                        Search Your Next Stay
                     </h1>
                 </div>
 
@@ -75,7 +88,7 @@ const Home = () => {
                         {/* Destination Input */}
                         <input
                             type="text"
-                            placeholder="Enter destination"
+                            placeholder="Enter Destination"
                             value={destination}
                             onChange={(e) => setDestination(e.target.value)}
                         />
@@ -124,17 +137,71 @@ const Home = () => {
                         {/* Guest Selector */}
                         <div ref={guestDiv} className="guest-selector">
                             <input
+                                className='guests-input'
                                 type="text"
                                 placeholder="Guests"
-                                onClick={() => setShowGuestSelector(!showGuestSelector)}
+                                onClick={toggleGuestSelector}
                                 readOnly
-                                value={`${guests} Guest${guests > 1 ? 's' : ''}`}
+                                value={`${adults} adult${adults > 1 ? 's' : ''} · ${children} child${children > 1 ? 'ren' : ''} · ${rooms} room${rooms > 1 ? 's' : ''}`}
                             />
                             {showGuestSelector && (
                                 <div className="guest-selector-popup">
-                                    <button onClick={() => setGuests(Math.max(1, guests - 1))}>-</button>
+                                    <div className='guest-selector-label flex'>
+                                        <div className='guest-label'>
+                                            <label>Adults</label>
+                                        </div>
+                                        <div className="counter">
+                                            
+                                            <button className='button-group' onClick={() => setAdults(Math.max(1, adults - 1))}>-</button>
+                                            <span>{adults}</span>
+                                            <button className='button-group' onClick={() => setAdults(adults + 1)}>+</button>
+                                        </div>
+                                    </div>
+
+                                    <div className='guest-selector-label flex'>
+                                        <div className='guest-label'>
+                                            <label>Children</label>
+                                        </div>
+                                        <div className="counter">
+                                            <button className='button-group' onClick={() => setChildren(Math.max(0, children - 1))}>-</button>
+                                            <span>{children}</span>
+                                            <button className='button-group' onClick={() => setChildren(children + 1)}>+</button>
+                                        </div>
+                                    </div>
+
+                                    <div className='guest-selector-label flex'>
+                                        <div className='guest-label'>
+                                            <label>Rooms</label>
+                                        </div>
+                                        <div className="counter">
+                                            <button className='button-group' onClick={() => setRooms(Math.max(1, rooms - 1))}>-</button>
+                                            <span>{rooms}</span>
+                                            <button className='button-group' onClick={() => setRooms(rooms + 1)}>+</button>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div className="toggle flex">
+                                        <div className='petsLabel'>
+                                            <label>Travelling with pets?</label>
+                                        </div>
+                                        <div className='petsInput'>
+                                            <input
+                                                type="checkbox"
+                                                checked={withPets}
+                                                onChange={() => setWithPets(!withPets)}
+                                            />
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    <p className="note">
+                                        Assistance animals aren’t considered pets.<br />
+                                        <a href="https://example.com">Read more about travelling with assistance animals</a>
+                                    </p>
+                                    <button className="done-button" onClick={handleDone}>Done</button>
+                                    {/* <button onClick={() => setGuests(Math.max(1, guests - 1))}>-</button>
                                     <span>{guests}</span>
-                                    <button onClick={() => setGuests(guests + 1)}>+</button>
+                                    <button onClick={() => setGuests(guests + 1)}>+</button> */}
                                 </div>
                             )}
                         </div>
