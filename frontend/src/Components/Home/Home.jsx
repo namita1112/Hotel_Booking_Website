@@ -7,12 +7,14 @@ import { FiFacebook } from 'react-icons/fi';
 import { AiOutlineInstagram } from "react-icons/ai";
 import { FaTripadvisor } from "react-icons/fa";
 import { BsListTask } from "react-icons/bs";
+import { HiOutlineLocationMarker } from "react-icons/hi";
 import { TbApps } from "react-icons/tb";
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
 const Home = () => {
     const [destination, setDestination] = useState('');
+    const [showPopup, setShowPopup] = useState(false);
     const [checkInDate, setCheckInDate] = useState(null);
     const [checkOutDate, setCheckOutDate] = useState(null);
     const [showDatePicker, setShowDatePicker] = useState(false);
@@ -21,29 +23,27 @@ const Home = () => {
     const [children, setChildren] = useState(0);
     const [rooms, setRooms] = useState(1);
     const [withPets, setWithPets] = useState(false);
-    const [guests, setGuests] = useState(1);
-
     const datePickerRef = useRef(null);
-
     const guestDiv = useRef(null);
-
+    const popularDestinations = [
+        { name: "Goa", country: "India" },
+        { name: "Lonavala", country: "India" },
+        { name: "Mumbai", country: "India" },
+        { name: "North Goa", country: "India" },
+        { name: "Alibaug", country: "India" },
+    ];
     const toggleGuestSelector = () => {
         setShowGuestSelector(!showGuestSelector);
     };
-
     const handleDone = () => {
         setShowGuestSelector(false);
     };
-
-
     useEffect(() => {
         Aos.init({ duration: 2000 });
     }, []);
-
     const handleDateInputClick = () => {
         setShowDatePicker(true); // Set date picker to open on first click
     };
-
     // Close date picker when clicking outside
     const handleClickOutside = (event) => {
         if (datePickerRef.current && !datePickerRef.current.contains(event.target)) {
@@ -53,14 +53,12 @@ const Home = () => {
             setShowGuestSelector(false);
         }
     };
-
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
-
     // Automatically close date picker when both dates are selected
     useEffect(() => {
         if (checkInDate && checkOutDate) {
@@ -91,7 +89,29 @@ const Home = () => {
                             placeholder="Enter Destination"
                             value={destination}
                             onChange={(e) => setDestination(e.target.value)}
+                            onClick={() => setShowPopup(true)}
+                            onBlur={() => setShowPopup(false)}
+                            onFocus={() => setShowPopup(true)}
                         />
+                        {showPopup && (
+                            <div className="popup">
+                            <h3>Popular nearby destinations</h3>
+                            <ul className='nearby-destination'>
+                                {popularDestinations.map((item, index) => (
+                                <li key={index} className="destination-item">
+                                    <HiOutlineLocationMarker className='icon'/>
+                                    <div>
+                                    <p className="destination-name">{item.name}</p>
+                                    <p className="destination-country">{item.country}</p>
+                                    </div>
+                                </li>
+                                ))}
+                            </ul>
+                            </div>
+                        )}
+                        
+
+
 
                         <div ref={datePickerRef} className="date-picker">
                             <input

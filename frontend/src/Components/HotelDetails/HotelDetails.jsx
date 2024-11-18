@@ -1,17 +1,12 @@
-import React from "react"
-import "./app.css"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./Components/Home/Home"
-import Navbar  from "./Components/Navbar/Navbar"
-import Main from "./Components/Main/Main"
-import Footer from "./Components/Footer/Footer"
-import HotelDetails from "./Components/HotelDetails/HotelDetails";
-import img from './Assets/hotel-view1.jpg';
-import img1 from './Assets/hotel-view2.jpg';
-import img2 from './Assets/hotel-swimmingpool1.jpg';
-import img3 from './Assets/hotel-swimmingpool2.jpg';
-import img4 from './Assets/hotel-swimmingpool3.jpg';
-import img5 from './Assets/hotel-swimmingpool4.jpg';
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import './hoteldetails.css';
+import img from '../../Assets/hotel-view1.jpg';
+import img1 from '../../Assets/hotel-view2.jpg';
+import img2 from '../../Assets/hotel-swimmingpool1.jpg';
+import img3 from '../../Assets/hotel-swimmingpool2.jpg';
+import img4 from '../../Assets/hotel-swimmingpool3.jpg';
+import img5 from '../../Assets/hotel-swimmingpool4.jpg';
 
 const hotels = [
     {
@@ -204,26 +199,26 @@ const hotels = [
 
 ]
 
-const App = () => {
-    return(
-        // <>
-        // <Navbar/>
-        // <Home/>
-        // <Main/>
-        // <Footer/>
-        // </>
-        <Router>
-            <Navbar />
-            {/* <Home/>
-            <Main/> */}
-            <Routes>
-                <Route path="/" element={<><Home /><Main /></>} />
-                {/* <Route path="/main" element={<Main />} /> */}
-                <Route path="/hotel/:id" element={<HotelDetails hotels={hotels} />} />
-            </Routes>
-            <Footer />
-        </Router>
-    )
-}
+const HotelDetails = ({ hotels }) => {
+    const { id } = useParams();
+    const hotel = hotels.find(hotel => hotel.id === parseInt(id));
 
-export default App
+    if (!hotel) return <h2>Hotel not found</h2>;
+
+    return (
+        <div className="hotelDetails">
+            <h1>{hotel.destTitle}</h1>
+            <img src={hotel.imgSrc} alt={hotel.destTitle} />
+            <p>{hotel.description}</p>
+            <ul>
+                <li><strong>Address:</strong> {hotel.Address}</li>
+                <li><strong>Check-In:</strong> {hotel.CheckIn}</li>
+                <li><strong>Check-Out:</strong> {hotel.CheckOut}</li>
+                <li><strong>Phone:</strong> {hotel.phone}</li>
+                <li><strong>Ratings:</strong> {hotel.ratings}</li>
+            </ul>
+        </div>
+    );
+};
+
+export default HotelDetails;

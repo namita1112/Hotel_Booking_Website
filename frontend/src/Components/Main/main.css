@@ -37,6 +37,7 @@
 .main .secContent {
   justify-content: center;
   gap: 1.5rem;
+  cursor: pointer;
 }
 .main .secContent .singleDestination {
   height: 100%;

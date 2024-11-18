@@ -1,18 +1,18 @@
-import React, {useEffect, useState} from 'react'
-import './main.css'
-import img from '../../Assets/hotel-view1.jpg'
-import img1 from '../../Assets/hotel-view2.jpg'
-import img2 from '../../Assets/hotel-swimmingpool1.jpg'
-import img3 from '../../Assets/hotel-swimmingpool2.jpg'
-import img4 from '../../Assets/hotel-swimmingpool3.jpg'
-import img5 from '../../Assets/hotel-swimmingpool4.jpg'
+import React, {useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import './main.css';
+import img from '../../Assets/hotel-view1.jpg';
+import img1 from '../../Assets/hotel-view2.jpg';
+import img2 from '../../Assets/hotel-swimmingpool1.jpg';
+import img3 from '../../Assets/hotel-swimmingpool2.jpg';
+import img4 from '../../Assets/hotel-swimmingpool3.jpg';
+import img5 from '../../Assets/hotel-swimmingpool4.jpg';
 import Aos, { init } from 'aos';
-import 'aos/dist/aos.css'
+import 'aos/dist/aos.css';
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import { HiOutlineClipboardCheck } from "react-icons/hi";
-import { MdOutlineHotel } from "react-icons/md";
-import { MdOutlineHotelClass } from "react-icons/md";
-
+// import { HiOutlineClipboardCheck } from "react-icons/hi";
+// import { MdOutlineHotel } from "react-icons/md";
+// import { MdOutlineHotelClass } from "react-icons/md";
 const ITEMS_PER_PAGE = 6;
 
 const Data = [
@@ -207,12 +207,8 @@ const Data = [
 ]
 
 const Main = () => {
+    const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
-
-    useEffect(() =>{
-        Aos.init({duration: 2000})
-    }, []);
-
     const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
     const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
     const currentItems = Data.slice(indexOfFirstItem, indexOfLastItem);
@@ -227,6 +223,14 @@ const Main = () => {
         if (currentPage > 1) setCurrentPage(currentPage - 1);
     };
 
+    const handleCardClick = (id) => {
+        navigate(`/hotel/${id}`);
+    };
+
+    useEffect(() =>{
+        Aos.init({duration: 2000})
+    }, []);
+
     return (
         <section className='main container section'>
             <div className="secTitle">
@@ -238,7 +242,7 @@ const Main = () => {
                     currentItems.map(({id, imgSrc, type, destTitle, Address, location, grade, ratings, fees, phone,
                         CheckIn, CheckOut, description, overviewTitle, overview}) => (
                             
-                                <div data-aos="fade-up" key={id} className="singleDestination">
+                                <div data-aos="fade-up" key={id} className="singleDestination" onClick={() => handleCardClick(id)}>
                                     <div className="imageDiv">
                                         <img src={imgSrc} alt={destTitle}></img>
                                     </div>
@@ -257,12 +261,12 @@ const Main = () => {
                                                 <h5>₹{fees}</h5>
                                             </div>
                                         </div> */}
-                                        <div className="hotelType flex">
+                                        {/* <div className="hotelType flex">
                                         <MdOutlineHotelClass className='icon'/><p>{type}</p>  
                                         </div>
                                         <div className="desc">
                                             <p>{overviewTitle}</p>   
-                                        </div>
+                                        </div> */}
                                         <div className='ratings'>
                                             <span><small>8.4</small> <b>Very Good</b> (94 ratings)</span>
                                         </div>
