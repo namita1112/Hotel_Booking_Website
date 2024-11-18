@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './hoteldetails.css';
 import img from '../../Assets/hotel-view1.jpg';
@@ -7,6 +7,7 @@ import img2 from '../../Assets/hotel-swimmingpool1.jpg';
 import img3 from '../../Assets/hotel-swimmingpool2.jpg';
 import img4 from '../../Assets/hotel-swimmingpool3.jpg';
 import img5 from '../../Assets/hotel-swimmingpool4.jpg';
+import SearchBar from '../SearchBar/SearchBar';
 
 const hotels = [
     {
@@ -201,22 +202,91 @@ const hotels = [
 
 const HotelDetails = ({ hotels }) => {
     const { id } = useParams();
+    const [activeTab, setActiveTab] = useState('info');
+
     const hotel = hotels.find(hotel => hotel.id === parseInt(id));
 
     if (!hotel) return <h2>Hotel not found</h2>;
 
     return (
         <div className="hotelDetails">
-            <h1>{hotel.destTitle}</h1>
-            <img src={hotel.imgSrc} alt={hotel.destTitle} />
-            <p>{hotel.description}</p>
-            <ul>
-                <li><strong>Address:</strong> {hotel.Address}</li>
-                <li><strong>Check-In:</strong> {hotel.CheckIn}</li>
-                <li><strong>Check-Out:</strong> {hotel.CheckOut}</li>
-                <li><strong>Phone:</strong> {hotel.phone}</li>
-                <li><strong>Ratings:</strong> {hotel.ratings}</li>
-            </ul>
+            <div className="SearchBar"><SearchBar /></div>
+            
+            {/* Top Card */}
+            <div className="hotelCard">
+                {/* Left Section - Image */}
+                <div className="hotelImage">
+                    <img src={hotel.imgSrc} alt={hotel.destTitle} />
+                </div>
+
+                {/* Middle Section - Details */}
+                <div className="hotelInfo">
+                    <h2>{hotel.destTitle}</h2>
+                    <p>{hotel.overviewTitle}</p>
+                    <p>{hotel.distance} km to City Centre</p>
+                    <p className="hotelRating">{hotel.ratings} ★ ( reviews)</p>
+                </div>
+
+                {/* Right Section - Price */}
+                <div className="hotelPrice">
+                    <p>From <strong>₹{hotel.price}</strong></p>
+                    <button className="seePricesBtn">See Prices</button>
+                </div>
+            </div>
+
+            {/* Tabbed Interface */}
+            <div className="tabContainer">
+                <div className="tabs">
+                    <button 
+                        className={activeTab === 'info' ? 'active' : ''}
+                        onClick={() => setActiveTab('info')}
+                    >
+                        Info
+                    </button>
+                    <button 
+                        className={activeTab === 'photos' ? 'active' : ''}
+                        onClick={() => setActiveTab('photos')}
+                    >
+                        Photos
+                    </button>
+                    <button 
+                        className={activeTab === 'reviews' ? 'active' : ''}
+                        onClick={() => setActiveTab('reviews')}
+                    >
+                        Reviews
+                    </button>
+                </div>
+
+                <div className="tabContent">
+                    {activeTab === 'info' && (
+                        <div className="infoTab">
+                            <h3>Amenities</h3>
+                            <ul>
+                                {/* {hotel.amenities.map((amenity, index) => (
+                                    <li key={index}>{amenity}</li>
+                                ))} */}
+                            </ul>
+                        </div>
+                    )}
+                    {activeTab === 'photos' && (
+                        <div className="photosTab">
+                            {/* {hotel.photos.map((photo, index) => (
+                                <img key={index} src={photo} alt={`Hotel Photo ${index + 1}`} />
+                            ))} */}
+                        </div>
+                    )}
+                    {activeTab === 'reviews' && (
+                        <div className="reviewsTab">
+                            {/* {hotel.reviews.map((review, index) => (
+                                <div key={index} className="review">
+                                    <p><strong>{review.user}:</strong> {review.comment}</p>
+                                </div>
+                            ))} */}
+                        </div>
+                    )}
+                </div>
+            </div>
+
         </div>
     );
 };

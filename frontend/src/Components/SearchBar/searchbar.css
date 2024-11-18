@@ -1,0 +1,321 @@
+.cardDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem; /* Add spacing between items */
+  padding: 2rem 1rem;
+  background: var(--whiteColor);
+  border-radius: 10px;
+}
+.cardDiv .destination {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 250px;
+}
+.cardDiv label {
+  display: block;
+  color: var(--textColor);
+  padding-bottom: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.cardDiv .lable_total {
+  justify-content: space-between;
+  align-items: center;
+}
+.cardDiv .lable_total .total {
+  color: var(--textColor);
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+.cardDiv .search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+@media (min-width: 768px) {
+  .cardDiv .search-bar {
+    flex-wrap: nowrap;
+  }
+}
+.cardDiv .search-bar input[type=text] {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 260px;
+}
+.cardDiv .search-bar input[type=text]:focus {
+  outline: none;
+  border-color: var(--PrimaryColor);
+}
+.cardDiv .popup {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.cardDiv .popup h3 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+  z-index: 10;
+}
+.cardDiv .nearby-destination {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+}
+.cardDiv .destination-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  color: var(--textColor);
+  cursor: pointer;
+  z-index: 10;
+}
+.cardDiv .destination-item:hover {
+  background-color: #f0f0f0;
+}
+.cardDiv .location-icon {
+  font-size: 18px;
+  margin-right: 8px;
+}
+.cardDiv .destination-name {
+  font-weight: bold;
+  font-size: 14px;
+  margin: 0;
+}
+.cardDiv .destination-country {
+  font-size: 12px;
+  color: #777;
+  margin: 0;
+}
+.cardDiv .date-picker {
+  position: relative;
+}
+.cardDiv .date-picker input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.cardDiv .date-picker .date-picker-popup {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.cardDiv .date-picker .date-picker-popup .close-button {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #888;
+}
+.cardDiv .date-picker .date-picker-popup .date-picker-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+}
+.cardDiv .date-picker .date-picker-popup .react-datepicker {
+  font-size: 14px;
+}
+.cardDiv .guest-selector {
+  position: relative;
+}
+.cardDiv .guest-selector input {
+  width: -moz-max-content;
+  width: max-content;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.cardDiv .guest-selector .guest-selector-popup {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  width: 400px;
+}
+.cardDiv .guest-selector .guest-selector-popup .guest-selector-label {
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.cardDiv .guest-selector .guest-selector-popup .guest-selector-label .counter {
+  width: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.cardDiv .guest-selector .guest-selector-popup .guest-selector-label .counter label {
+  font-weight: bold;
+}
+.cardDiv .guest-selector .guest-selector-popup .guest-selector-label .counter .button-group {
+  cursor: pointer;
+}
+.cardDiv .guest-selector .guest-selector-popup .guest-selector-label .counter button {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.cardDiv .guest-selector .guest-selector-popup .guest-selector-label .counter span {
+  color: var(--textColor);
+  width: 20px;
+  font-size: 16px;
+}
+.cardDiv .guest-selector .guest-selector-popup hr {
+  margin: 15px 0;
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+}
+.cardDiv .guest-selector .guest-selector-popup .toggle {
+  justify-content: space-between;
+  align-items: center;
+}
+.cardDiv .guest-selector .guest-selector-popup .toggle .petsInput {
+  width: 3rem;
+  margin-bottom: 9px;
+}
+.cardDiv .guest-selector .guest-selector-popup .toggle label {
+  font-weight: bold;
+  flex: 1;
+}
+.cardDiv .guest-selector .guest-selector-popup .toggle input[type=checkbox] {
+  float: left;
+  transform: scale(1.2);
+}
+.cardDiv .guest-selector .guest-selector-popup .note {
+  font-size: 12px;
+  color: #666;
+  margin: 10px 0;
+}
+.cardDiv .guest-selector .guest-selector-popup .note a {
+  color: #0073e6;
+  text-decoration: underline;
+}
+.cardDiv .guest-selector .guest-selector-popup .done-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+.cardDiv .SearchOption {
+  color: var(--whiteColor);
+  font-size: 1rem;
+}
+.cardDiv .input {
+  height: 40px;
+  padding: 0 1rem;
+  background: var(--inputColor);
+  border-radius: 3rem;
+}
+.cardDiv .input input {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 500;
+}
+.cardDiv .input input::-moz-placeholder {
+  font-size: 13px;
+}
+.cardDiv .input input::placeholder {
+  font-size: 13px;
+}
+.cardDiv .input .icon {
+  font-size: 18px;
+  color: var(--PrimaryColor) !important;
+  margin-left: 10px;
+}
+.cardDiv .input .input[type=range] {
+  background: blue;
+}
+.cardDiv .searchOptions {
+  position: absolute;
+  background: var(--gradientColor);
+  width: -moz-max-content;
+  width: max-content;
+  bottom: -0.7rem;
+  -moz-column-gap: 0.8rem;
+       column-gap: 0.8rem;
+  padding: 5px 1rem;
+  border-radius: 3rem;
+  left: 50%;
+  transform: translate(-50%);
+  justify-content: center;
+  cursor: pointer;
+}
+.cardDiv .searchOptions:hover {
+  background: var(--PrimaryColor);
+}
+.cardDiv .searchOptions .icon {
+  font-size: 18px;
+}
+.cardDiv .searchOptions span {
+  font-size: 13px;
+}
+
+@media screen and (min-width: 500px) {
+  .cardDiv {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 660px) {
+  .cardDiv {
+    padding: 2rem 1rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 1240px) {
+  .cardDiv {
+    padding: 2rem 1rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}/*# sourceMappingURL=searchbar.css.map */

@@ -12,6 +12,11 @@
   --cardBG: rgb(225, 225, 235);
 }
 
+.navBarSection {
+  position: fixed;
+  z-index: 1000;
+}
+
 .header {
   position: fixed;
   display: flex;

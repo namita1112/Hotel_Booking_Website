@@ -11,4 +11,101 @@
   --bodyColor: rgb(240, 240, 246);
   --cardBG: rgb(225, 225, 235);
   --cardHover: rgb(255, 255, 255);
+}
+
+.hotelDetails {
+  padding-top: 70px;
+}
+.hotelDetails .SearchBar {
+  background: var(--gradientColor);
+  width: 100%;
+  height: 150px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 1rem;
+}
+.hotelDetails .hotelCard {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  height: 179px;
+  margin: 25px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.hotelDetails .hotelCard .hotelImage img {
+  cursor: pointer;
+  width: 300px;
+  height: 177px;
+  border-top-left-radius: 8px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.hotelDetails .hotelCard .hotelInfo {
+  flex: 2;
+  padding: 0 20px;
+}
+.hotelDetails .hotelCard .hotelInfo h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+.hotelDetails .hotelCard .hotelRating {
+  color: green;
+  font-weight: bold;
+}
+.hotelDetails .hotelCard .hotelPrice {
+  text-align: right;
+}
+.hotelDetails .hotelCard .hotelPrice p {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+.hotelDetails .hotelCard .seePricesBtn {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.hotelDetails .tabContainer {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.hotelDetails .tabContainer .tabs {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+.hotelDetails .tabContainer .tabs button {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.hotelDetails .tabContainer .tabs .active {
+  border-bottom: 2px solid #007bff;
+  color: #007bff;
+}
+.hotelDetails .tabContainer .tabContent {
+  padding: 20px;
+}
+.hotelDetails .tabContainer .photosTab img {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
+}
+.hotelDetails .tabContainer .review {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
 }/*# sourceMappingURL=hoteldetails.css.map */
