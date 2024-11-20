@@ -208,6 +208,7 @@ const Data = [
 
 const Main = () => {
     const navigate = useNavigate();
+    
     const [currentPage, setCurrentPage] = useState(1);
     const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
     const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;

@@ -19,12 +19,12 @@
 .hotelDetails .SearchBar {
   background: var(--gradientColor);
   width: 100%;
-  height: 150px;
+  height: 190px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto;
+  margin-top: auto;
   padding: 1rem;
 }
 .hotelDetails .hotelCard {
@@ -33,7 +33,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   height: 179px;
-  margin: 25px;
+  margin: 25px 25px 0;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -48,6 +48,15 @@
 .hotelDetails .hotelCard .hotelInfo {
   flex: 2;
   padding: 0 20px;
+  cursor: pointer;
+}
+.hotelDetails .hotelCard .hotelType {
+  cursor: pointer;
+  gap: 0.5rem;
+}
+.hotelDetails .hotelCard .hotelType .icon {
+  color: var(--textColor);
+  font-size: 15px;
 }
 .hotelDetails .hotelCard .hotelInfo h2 {
   font-size: 1.5em;
@@ -56,27 +65,52 @@
 .hotelDetails .hotelCard .hotelRating {
   color: green;
   font-weight: bold;
+  cursor: pointer;
 }
 .hotelDetails .hotelCard .hotelPrice {
-  text-align: right;
+  flex: 1;
+  background: #e6f7ff; /* Light blue background */
+  padding: 16px;
+  border-radius: 8px;
+  position: relative; /* Set position relative to allow absolute positioning */
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: space-between; /* Ensure spacing between price and button */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  cursor: pointer;
 }
-.hotelDetails .hotelCard .hotelPrice p {
-  font-size: 1.2em;
-  margin-bottom: 10px;
+.hotelDetails .hotelCard .hotelPrice:hover {
+  background: #d7eef8;
 }
-.hotelDetails .hotelCard .seePricesBtn {
-  padding: 10px 15px;
-  background-color: #007bff;
+.hotelDetails .hotelCard .hotelPrice .priceText {
+  font-size: 16px;
+  font-weight: 600;
+  color: #007bff;
+  margin-bottom: auto;
+}
+.hotelDetails .hotelCard .hotelPrice .seePricesBtn {
+  position: absolute; /* Use absolute positioning */
+  bottom: 16px; /* Align to the bottom */
+  right: 16px; /* Align to the right */
+  background: #007bff; /* Blue button */
   color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 12px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
+.hotelDetails .hotelCard .hotelPrice .seePricesBtn:hover {
+  background: #0056b3;
+}
 .hotelDetails .tabContainer {
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 0px 0px 8px 8px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 25px 25px;
 }
 .hotelDetails .tabContainer .tabs {
   display: flex;
@@ -84,7 +118,7 @@
 }
 .hotelDetails .tabContainer .tabs button {
   flex: 1;
-  padding: 10px;
+  padding: 5px;
   background: none;
   border: none;
   cursor: pointer;
@@ -97,6 +131,57 @@
 .hotelDetails .tabContainer .tabContent {
   padding: 20px;
 }
+.hotelDetails .tabContainer .tabContent .infoTab {
+  padding: 20px;
+  background: var(--whiteColor);
+}
+.hotelDetails .tabContainer .tabContent .infoTab .carousel {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.hotelDetails .tabContainer .tabContent .infoTab .carousel .amenities {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  gap: 31px;
+  padding-left: 25px;
+}
+.hotelDetails .tabContainer .tabContent .infoTab .carousel .amenities .card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  width: 30%;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.hotelDetails .tabContainer .tabContent .infoTab .carousel .amenities .card h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.hotelDetails .tabContainer .tabContent .infoTab .carousel .amenities .card p {
+  font-size: 14px;
+  color: #666;
+}
+.hotelDetails .tabContainer .tabContent .infoTab .carousel .amenities .arrow {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  padding: 0 16px;
+}
+.hotelDetails .tabContainer .tabContent .infoTab .carousel .amenities .arrow:hover {
+  color: #007BFF;
+}
+.hotelDetails .tabContainer .tabContent .infoTab .carousel .amenities .arrow.left {
+  position: absolute;
+  left: -40px;
+}
+.hotelDetails .tabContainer .tabContent .infoTab .carousel .amenities .arrow.right {
+  position: absolute;
+}
 .hotelDetails .tabContainer .photosTab img {
   width: 100px;
   height: 100px;
@@ -108,4 +193,30 @@
 .hotelDetails .tabContainer .review {
   border-bottom: 1px solid #ddd;
   padding: 10px 0;
+}
+.hotelDetails .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+.hotelDetails .pagination button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: hsl(187, 85%, 43%);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.hotelDetails .pagination button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+.hotelDetails .pagination span {
+  font-size: 16px;
+  color: #333;
 }/*# sourceMappingURL=hoteldetails.css.map */

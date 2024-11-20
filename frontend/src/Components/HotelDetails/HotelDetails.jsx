@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './hoteldetails.css';
 import img from '../../Assets/hotel-view1.jpg';
@@ -8,6 +8,11 @@ import img3 from '../../Assets/hotel-swimmingpool2.jpg';
 import img4 from '../../Assets/hotel-swimmingpool3.jpg';
 import img5 from '../../Assets/hotel-swimmingpool4.jpg';
 import SearchBar from '../SearchBar/SearchBar';
+import { MdOutlineHotelClass } from "react-icons/md";
+import { IoMdClose } from "react-icons/io";
+import Aos, { init } from 'aos';
+import { MdKeyboardArrowRight } from "react-icons/md";
+import 'aos/dist/aos.css';
 
 const hotels = [
     {
@@ -200,9 +205,124 @@ const hotels = [
 
 ]
 
+const amenities = [
+    {
+        'id': 1,
+        'Title': 'Strawberry farm views',
+        'Type': "Location",
+        'Desc': "Some rooms offer stunning views of the nearby strawberry farm, adding a touch of local charm."
+    },
+    {
+        'id': 2,
+        'Title': 'Family-Friendly Atmosphere',
+        'Type': "Room and accommodation",
+        'Desc': "Welcoming families and couples, with comfortable rooms and a range of amenities."
+    },
+    {
+        'id': 3,
+        'Title': 'Convenient Location',
+        'Type': "Dining and cuisine",
+        'Desc': "Located near Venna Lake, Mahabaleshwar Road, and a variety of restaurants, shops, and attractions."
+    },
+
+    {
+        'id': 4,
+        'Title': 'Multi-Cuisine Restaurant',
+        'Type': "Dining and cuisine",
+        'Desc': "Indulge in delicious North Indian and Chinese cuisine at the hotel's in-house restaurant, Food Express."
+    },
+    {
+        'id': 5,
+        'Title': 'Relaxing Amenities',
+        'Type': "Services",
+        'Desc': "Enjoy amenities like a 24-hour front desk, room service, and a functional pantry."
+    },
+    {
+        'id': 6,
+        'Title': 'Venna Lake Views',
+        'Type': "Views",
+        'Desc': "Enjoy a scenic stay just a 2-minute drive from Venna Lake, a popular spot for boating and relaxation."
+    },
+    {
+        'id': 7,
+        'Title': "Explore Mahabaleshwar's Attractions",
+        'Type': "Activities",
+        'Desc': "Discover nearby attractions like Lingmala Falls, Mahabaleshwar Temple, and the bustling Mahabaleshwar market."
+    },
+    {
+        'id': 8,
+        'Title': "Easy Access to Transportation",
+        'Type': "Location",
+        'Desc': "Conveniently located near Mahabaleshwar ST Station, making it easy to explore the surrounding area."
+    },
+    {
+        'id': 9,
+        'Title': "Budget-friendly option",
+        'Type': "Experience",
+        'Desc': "Guests appreciate the hotel's affordability, offering a good value for the amenities provided."
+    },
+    {
+        'id': 10,
+        'Title': "Excellent value for money",
+        'Type': "Comfort",
+        'Desc': "Guests consistently mention the hotel's excellent value for money, offering a comfortable stay at an affordable price."
+    },
+]
+
+const ITEMS_PER_PAGE = 6;
+
 const HotelDetails = ({ hotels }) => {
     const { id } = useParams();
-    const [activeTab, setActiveTab] = useState('info');
+
+    // For Pagination
+    const [currentPage, setCurrentPage] = useState(1);
+    const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
+    const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
+    const currentItems = hotels.slice(indexOfFirstItem, indexOfLastItem);
+
+    const totalPages = Math.ceil(hotels.length / ITEMS_PER_PAGE);
+
+    const handleNext = () => {
+        if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+    };
+
+    const handlePrev = () => {
+        if (currentPage > 1) setCurrentPage(currentPage - 1);
+    };
+
+    // For Good to know section In Info tab
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const itemsPerSlide = 3;
+    const handleNextAmenities = () => {
+        if (currentIndex + itemsPerSlide < amenities.length) {
+            setCurrentIndex(currentIndex + itemsPerSlide);
+        }
+    };
+    const handlePrevAmenities = () => {
+        if (currentIndex - itemsPerSlide >= 0) {
+            setCurrentIndex(currentIndex - itemsPerSlide);
+        }
+    };
+    const visibleAmenities = amenities.slice(currentIndex, currentIndex + itemsPerSlide);
+
+   
+
+    // const [activeTab, setActiveTab] = useState('info');
+    const [activeTab, setActiveTab] = useState('');
+    const [isTabOpen, setIsTabOpen] = useState(false);
+
+    const handleOpenTab = (tab) => {
+        setActiveTab(tab); 
+        setIsTabOpen(true); 
+    };
+
+    const handleCloseTab = () => {
+        setIsTabOpen(false); 
+    };
+
+    useEffect(() =>{
+        Aos.init({duration: 2000})
+    }, []);
 
     const hotel = hotels.find(hotel => hotel.id === parseInt(id));
 
@@ -210,31 +330,44 @@ const HotelDetails = ({ hotels }) => {
 
     return (
         <div className="hotelDetails">
-            <div className="SearchBar"><SearchBar /></div>
+            <div data-aos="fade-up" className="SearchBar"><SearchBar /></div>
             
             {/* Top Card */}
-            <div className="hotelCard">
+            <div data-aos="fade-up" className="hotelCard">
                 {/* Left Section - Image */}
-                <div className="hotelImage">
+                <div className="hotelImage" onClick={(e) => {
+                        e.stopPropagation(); 
+                        handleOpenTab('photos');
+                    }}>
                     <img src={hotel.imgSrc} alt={hotel.destTitle} />
                 </div>
 
                 {/* Middle Section - Details */}
                 <div className="hotelInfo">
-                    <h2>{hotel.destTitle}</h2>
+                    <h2 onClick={(e) => {
+                            e.stopPropagation();
+                            handleOpenTab('info');
+                        }}>{hotel.destTitle}</h2>
+                    <div className="hotelType flex">
+                        <MdOutlineHotelClass className='icon'/><p> {hotel.type}</p>  
+                    </div>
                     <p>{hotel.overviewTitle}</p>
                     <p>{hotel.distance} km to City Centre</p>
-                    <p className="hotelRating">{hotel.ratings} ★ ( reviews)</p>
+                    <p className="hotelRating" onClick={(e) => {
+                            e.stopPropagation();
+                            handleOpenTab('reviews');
+                        }}>{hotel.ratings} ★ ( reviews)</p>
                 </div>
 
                 {/* Right Section - Price */}
                 <div className="hotelPrice">
-                    <p>From <strong>₹{hotel.price}</strong></p>
-                    <button className="seePricesBtn">See Prices</button>
+                    <p className="priceInfo">From <strong>₹ 2,234{hotel.price}</strong></p>
+                    <button className="seePricesBtn btn">Reserve</button>
                 </div>
             </div>
 
             {/* Tabbed Interface */}
+            {isTabOpen && (
             <div className="tabContainer">
                 <div className="tabs">
                     <button 
@@ -255,12 +388,38 @@ const HotelDetails = ({ hotels }) => {
                     >
                         Reviews
                     </button>
+                    <button className='closeContainer' onClick={handleCloseTab}><IoMdClose className='icon'/></button>
                 </div>
 
                 <div className="tabContent">
                     {activeTab === 'info' && (
                         <div className="infoTab">
-                            <h3>Amenities</h3>
+                            <h3>Good to Know</h3>
+                            <div className='carousel'>
+                                {/* Left Arrow */}
+                                {currentIndex > 0 && (
+                                    <button className="arrow left" onClick={handlePrevAmenities}>
+                                        &#8592;
+                                    </button>
+                                )}
+
+                                {/* Visible Amenities */}
+                                <div className="amenities">
+                                    {visibleAmenities.map((amenity, index) => (
+                                        <div key={index} className="card">
+                                            <small>{amenity.Type}</small>
+                                            <h4>{amenity.Title}</h4>
+                                            <p>{amenity.Desc}</p>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                 {/* Right Arrow */}
+                                 {currentIndex + itemsPerSlide < amenities.length && (
+                                    <button className="arrow right" onClick={handleNextAmenities}><MdKeyboardArrowRight className='icon'/></button>
+                                )}
+
+                            </div>
                             <ul>
                                 {/* {hotel.amenities.map((amenity, index) => (
                                     <li key={index}>{amenity}</li>
@@ -286,6 +445,15 @@ const HotelDetails = ({ hotels }) => {
                     )}
                 </div>
             </div>
+            )}
+
+            {/* Pagination Controls */}
+            <div data-aos="fade-up" className="pagination">
+                <button onClick={handlePrev} disabled={currentPage === 1}>Previous</button>
+                <span>Page {currentPage} of {totalPages}</span>
+                <button onClick={handleNext} disabled={currentPage === totalPages}>Next</button>
+            </div>
+
 
         </div>
     );
