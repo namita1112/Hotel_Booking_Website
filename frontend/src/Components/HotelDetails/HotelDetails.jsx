@@ -12,6 +12,13 @@ import { MdOutlineHotelClass } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 import Aos, { init } from 'aos';
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowLeft } from "react-icons/md";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { CiWifiOn } from "react-icons/ci";
+import { CiParking1 } from "react-icons/ci";
+import { TbAirConditioning } from "react-icons/tb";
+import { IoRestaurantOutline } from "react-icons/io5";
+import { MdKeyboardArrowUp } from "react-icons/md";
 import 'aos/dist/aos.css';
 
 const hotels = [
@@ -269,6 +276,38 @@ const amenities = [
     },
 ]
 
+const top_amenities = {
+    top: ["Free WiFi", "Parking", "A/C", "Restaurant"], 
+    property: [
+        "Airport shuttle",
+        "Arcade/Video games",
+        "Breakfast",
+        "Car hire",
+        "Cashless payment",
+        "Daily housekeeping",
+        "Doctor on site",
+        "Express check-in",
+        "Free WiFi in public areas",
+        "Housekeeping",
+        "Luggage storage",
+        "Restaurant",
+        "Safe distance",
+    ],
+    room: [
+        "Air conditioning",
+        "Cable TV",
+        "Fan",
+        "Fireplace",
+        "Free WiFi (rooms)",
+        "Satellite TV",
+        "Television",
+        "Shower",
+        "WiFi",
+    ],
+    accessibility: ["Accessible parking"],
+};
+
+
 const ITEMS_PER_PAGE = 6;
 
 const HotelDetails = ({ hotels }) => {
@@ -319,6 +358,10 @@ const HotelDetails = ({ hotels }) => {
     const handleCloseTab = () => {
         setIsTabOpen(false); 
     };
+
+    // For Info expandable cards
+    const [isAmenitiesExpanded, setIsAmenitiesExpanded] = useState(false);
+    const [isAboutExpanded, setIsAboutExpanded] = useState(false);
 
     useEffect(() =>{
         Aos.init({duration: 2000})
@@ -399,7 +442,7 @@ const HotelDetails = ({ hotels }) => {
                                 {/* Left Arrow */}
                                 {currentIndex > 0 && (
                                     <button className="arrow left" onClick={handlePrevAmenities}>
-                                        &#8592;
+                                       <MdKeyboardArrowLeft />
                                     </button>
                                 )}
 
@@ -416,10 +459,69 @@ const HotelDetails = ({ hotels }) => {
 
                                  {/* Right Arrow */}
                                  {currentIndex + itemsPerSlide < amenities.length && (
-                                    <button className="arrow right" onClick={handleNextAmenities}><MdKeyboardArrowRight className='icon'/></button>
+                                    <button className="arrow right" onClick={handleNextAmenities}><MdKeyboardArrowRight/></button>
                                 )}
 
                             </div>
+
+                            <div className="expandableCards">
+                                {/* Top Amenities Card */}
+                                <div className="card">
+                                    <h4>Top Amenities</h4>
+                                    <div className="amenitiesList">
+                                        <p><CiWifiOn /> Free WiFi</p>
+                                        <p><CiParking1 /> Parking</p>
+                                        <p><TbAirConditioning /> A/C</p>
+                                        <p><IoRestaurantOutline /> Restaurant</p>
+                                    </div>
+                                    {isAmenitiesExpanded ? (
+                                        <div className="expandedContent">
+                                            <div className='amenitiesCategories'>
+                                                {/* Property Amenities */}
+                                                <div className="amenitiesCategory">
+                                                    <h5>Property amenities</h5>
+                                                    <ul>
+                                                    {top_amenities.property.map((property, index) => (
+                                                        <li key={index}>{property}</li>
+                                                    ))}
+                                                    </ul>
+                                                </div>
+
+                                                 {/* Room Amenities */}
+                                                <div className="amenitiesCategory">
+                                                    <h5>Room amenities</h5>
+                                                    {top_amenities.room.map((room, index) => (
+                                                        <li key={index}>{room}</li>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <button className="toggleBtn" onClick={() => setIsAmenitiesExpanded(false)}>Hide all amenities <MdKeyboardArrowUp /></button>
+                                        </div>
+                                    ) : (
+                                        <button className="toggleBtn flex" onClick={() => setIsAmenitiesExpanded(true)}>Show all amenities <MdKeyboardArrowDown /></button>
+                                    )}
+                                </div>
+
+                                {/* About Section Card */}
+                                <div className="card">
+                                    <h4>About Gugal Residency Mahabaleshwar</h4>
+                                    <p>
+                                        Gugal Residency Mahabaleshwar is a family-friendly budget property outside of Mahabaleshwar. The hotel features spacious rooms with balconies or terraces and lovely views of the nearby mountains.
+                                    </p>
+                                    {isAboutExpanded ? (
+                                        <div className="expandedContent">
+                                            <p>
+                                                Family rooms and deluxe rooms are cleaned daily and feature satellite television, complimentary bottled water, and separate seating and dining areas. Guests can relax in the hotel garden or take in the views from the outside.
+                                            </p>
+                                            <button className="toggleBtn" onClick={() => setIsAboutExpanded(false)}>Show less</button>
+                                        </div>
+                                    ) : (
+                                        <button className="toggleBtn" onClick={() => setIsAboutExpanded(true)}>Show all info</button>
+                                    )}
+                                </div>
+                            </div>
+
+
                             <ul>
                                 {/* {hotel.amenities.map((amenity, index) => (
                                     <li key={index}>{amenity}</li>

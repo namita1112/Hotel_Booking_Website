@@ -26,6 +26,7 @@
         justify-content: center;
         margin-top: auto;
         padding: 1rem;
+        z-index: 1000;
     }
 
     .hotelCard{
@@ -222,26 +223,170 @@
                         }
 
                         .arrow {
-                            background: none;
-                            border: none;
-                            font-size: 24px;
-                            cursor: pointer;
-                            color: #333;
-                            padding: 0 16px;
+                            // background: none;
+                            // border: none;
+                            // font-size: 24px;
+                            // cursor: pointer;
+                            // color: #333;
+                            // padding: 0 16px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 32px; /* Adjust the size */
+                            height: 32px;
+                            background-color: #fff; /* White background */
+                            border: none; /* Remove border */
+                            border-radius: 50%; /* Circular button */
+                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+                            cursor: pointer; /* Pointer on hover */
+                            position: absolute; /* For precise positioning */
+                            z-index: 10; /* Ensure it's on top */
+
+                            /* Transition for hover effect */
+                            transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+                            // &:hover {
+                            //     transform: scale(1.1); /* Slight zoom on hover */
+                            //     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+                            // }
+    
+                            // &.right {
+                            //     top: 50%; /* Center vertically */
+                            //     right: -16px; /* Position slightly outside the container */
+                            //     transform: translateY(-50%); /* Adjust for perfect centering */
+                            // }
+    
+                            // &.left {
+                            //     top: 50%;
+                            //     left: -16px;
+                            //     transform: translateY(-50%);
+                            // }
+
+                           
                         }
 
+                        
+
                         .arrow:hover {
-                            color: #007BFF;
+                            transform: scale(1.1); /* Slight zoom on hover */
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
                         }
                         
                         .arrow.left {
-                            position: absolute;
-                            left: -40px;
+                            top: 50%;
+                            left: -16px;
+                            transform: translateY(-50%);
                         }
                         
                         .arrow.right {
-                            position: absolute;
-                            // right: -20px;
+                            top: 50%; /* Center vertically */
+                            right: -16px; /* Position slightly outside the container */
+                            transform: translateY(-50%);
+                        }
+
+                        .rightArrow, .leftArrow {
+                            font-size: 20px; /* Size of the arrow icon */
+                            color: #000; /* Black arrow color */
+                        }
+
+
+                    }
+                }
+
+                .expandableCards{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                    margin-top: 24px;
+
+                    .card {
+                        background-color: #fff;
+                        border: 1px solid #ddd;
+                        border-radius: 8px;
+                        padding: 16px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+                        h4 {
+                            margin-bottom: 8px;
+                            font-size: 18px;
+                            font-weight: bold;
+                        }
+                
+                        .amenitiesList {
+                            display: flex;
+                            flex-wrap: wrap;
+                            // justify-content: space-around;
+                            gap: 5rem;
+
+                            p {
+                                margin: 0;
+                                font-size: 14px;
+                                color: #555;
+                                padding: 4px 8px;
+                            }
+                        }
+                
+                        .expandedContent {
+                            display: flex;
+                            flex-direction: column;
+                            // margin-top: 16px;
+                            // // display: flex;
+                            // gap: 32px;
+                            // margin-top: 8px;
+
+                            .amenitiesCategories {
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: 20px; /* Add spacing between categories */
+                            }
+
+                            .amenitiesCategory {
+                                flex: 1; /* Each category takes equal width */
+                                min-width: 200px;
+
+                                h5 {
+                                    font-size: 16px;
+                                    font-weight: bold;
+                                    margin-bottom: 8px;
+                                }
+
+                                ul {
+                                    list-style: none;
+                                    padding: 0;
+                    
+                                    li {
+                                        margin-bottom: 4px;
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+
+                            // p {
+                            //     font-size: 14px;
+                            //     color: #333;
+                            // }
+                        }
+
+                        .toggleBtn {
+                            margin-top: 20px; /* Space between the categories and the button */
+                            align-self: flex-start; /* Align button at the bottom */
+                            background-color: #fff;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                            padding: 10px 20px;
+                            cursor: pointer;
+                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                            // margin-top: 12px;
+                            // padding: 8px 16px;
+                            // background-color: transparent;
+                            // border: none;
+                            // color: #007BFF;
+                            // cursor: pointer;
+                            // font-size: 14px;
+                
+                            &:hover {
+                                text-decoration: none;
+                            }
                         }
                     }
                 }
