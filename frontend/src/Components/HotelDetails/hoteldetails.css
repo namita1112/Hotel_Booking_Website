@@ -34,7 +34,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   height: 179px;
-  margin: 25px 25px 0;
+  margin: 25px 85px 0;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -111,7 +111,7 @@
   border-radius: 0px 0px 8px 8px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 0 25px 25px;
+  margin: 0 85px 25px;
 }
 .hotelDetails .tabContainer .tabs {
   display: flex;
@@ -162,7 +162,7 @@
   margin-bottom: 8px;
 }
 .hotelDetails .tabContainer .tabContent .infoTab .carousel .amenities .card p {
-  font-size: 14px;
+  font-size: 13px;
   color: #666;
 }
 .hotelDetails .tabContainer .tabContent .infoTab .carousel .amenities .arrow {
@@ -224,7 +224,7 @@
 }
 .hotelDetails .tabContainer .tabContent .infoTab .expandableCards .card .amenitiesList p {
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   color: #555;
   padding: 4px 8px;
 }
@@ -254,6 +254,14 @@
   margin-bottom: 4px;
   font-size: 14px;
 }
+.hotelDetails .tabContainer .tabContent .infoTab .expandableCards .card .expandedContent p {
+  margin-top: 2px;
+  line-height: 1.6;
+}
+.hotelDetails .tabContainer .tabContent .infoTab .expandableCards .card .expandedContent h5 {
+  margin-top: 10px;
+  font-weight: bold;
+}
 .hotelDetails .tabContainer .tabContent .infoTab .expandableCards .card .toggleBtn {
   margin-top: 20px; /* Space between the categories and the button */
   align-self: flex-start; /* Align button at the bottom */
@@ -267,13 +275,79 @@
 .hotelDetails .tabContainer .tabContent .infoTab .expandableCards .card .toggleBtn:hover {
   text-decoration: none;
 }
-.hotelDetails .tabContainer .photosTab img {
+.hotelDetails .tabContainer .photosTab .photosSection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.hotelDetails .tabContainer .photosTab .thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.hotelDetails .tabContainer .photosTab .thumbnail {
   width: 100px;
   height: 100px;
-  margin: 5px;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 4px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+.hotelDetails .tabContainer .photosTab .thumbnail:hover {
+  transform: scale(1.1);
+}
+.hotelDetails .tabContainer .photosTab .photoModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.hotelDetails .tabContainer .photosTab .photoModal .modalContent {
+  width: 100%; /* Full width of parent */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hotelDetails .tabContainer .photosTab .photoModal .modalPhoto {
+  max-width: 1000px;
+  max-height: 1000px;
+  border-radius: 10px;
+}
+.hotelDetails .tabContainer .photosTab .photoModal .closeModal,
+.hotelDetails .tabContainer .photosTab .photoModal .prevPhoto,
+.hotelDetails .tabContainer .photosTab .photoModal .nextPhoto {
+  position: absolute;
+  top: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hotelDetails .tabContainer .photosTab .photoModal .closeModal {
+  top: 10px;
+  right: 10px;
+  transform: translateY(0);
+}
+.hotelDetails .tabContainer .photosTab .photoModal .prevPhoto {
+  left: 10px;
+}
+.hotelDetails .tabContainer .photosTab .photoModal .nextPhoto {
+  right: 10px;
 }
 .hotelDetails .tabContainer .review {
   border-bottom: 1px solid #ddd;

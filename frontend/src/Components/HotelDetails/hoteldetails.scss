@@ -36,7 +36,7 @@
         border-radius: 8px;
         height: 179px;
         // padding: 20px;
-        margin: 25px 25px 0;
+        margin: 25px 85px 0;
         // margin-bottom: 20px;
         background-color: #fff;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -162,7 +162,7 @@
         border-radius: 0px 0px 8px 8px;
         background-color: #fff;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin: 0 25px 25px;
+        margin: 0 85px 25px;
 
         .tabs {
             display: flex;
@@ -218,7 +218,7 @@
                         }
                         
                         .card p {
-                            font-size: 14px;
+                            font-size: 13px;
                             color: #666;
                         }
 
@@ -320,7 +320,7 @@
 
                             p {
                                 margin: 0;
-                                font-size: 14px;
+                                font-size: 13px;
                                 color: #555;
                                 padding: 4px 8px;
                             }
@@ -361,10 +361,15 @@
                                 }
                             }
 
-                            // p {
-                            //     font-size: 14px;
-                            //     color: #333;
-                            // }
+
+                            p {
+                                margin-top: 2px; 
+                                line-height: 1.6;
+                            }
+                            h5{
+                                margin-top: 10px;
+                                font-weight: bold;
+                            }
                         }
 
                         .toggleBtn {
@@ -393,13 +398,110 @@
             }
         }
 
-        .photosTab img {
-            width: 100px;
-            height: 100px;
-            margin: 5px;
-            object-fit: cover;
-            border-radius: 4px;
+        .photosTab {
+            .photosSection {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .thumbnails {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .thumbnail {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: transform 0.2s;
+            }
+
+            .thumbnail:hover {
+                transform: scale(1.1);
+            }
+
+            .photoModal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+
+                .modalContent {
+                    width: 100%; /* Full width of parent */
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    // width: 100%;
+                    // height: 100%;
+                }
+
+                .modalPhoto {
+                    max-width: 1000px;
+                    max-height: 1000px;
+                    border-radius: 10px;
+                }
+
+                .closeModal,
+                .prevPhoto,
+                .nextPhoto {
+                    position: absolute;
+                    top: 50%;
+                    background: rgba(255, 255, 255, 0.7);
+                    border: none;
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
+                    cursor: pointer;
+                    font-size: 20px;
+                    transform: translateY(-50%);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .closeModal {
+                    top: 10px;
+                    right: 10px;
+                    transform: translateY(0);
+                }
+                
+                .prevPhoto {
+                    left: 10px;
+                }
+                
+                .nextPhoto {
+                    right: 10px;
+                }
+            }
+
+            
+
+          
+
+            
+
+            
         }
+
+
+        // .photosTab img {
+        //     width: 100px;
+        //     height: 100px;
+        //     margin: 5px;
+        //     object-fit: cover;
+        //     border-radius: 4px;
+        // }
 
         .review {
             border-bottom: 1px solid #ddd;
