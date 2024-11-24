@@ -7,6 +7,9 @@ import img2 from '../../Assets/hotel-swimmingpool1.jpg';
 import img3 from '../../Assets/hotel-swimmingpool2.jpg';
 import img4 from '../../Assets/hotel-swimmingpool3.jpg';
 import img5 from '../../Assets/hotel-swimmingpool4.jpg';
+import img6 from '../../Assets/hotel-bedroom1.jpg';
+import img7 from '../../Assets/hotel-bedroom2.jpg';
+import img8 from '../../Assets/hotel-bedroom3.jpg';
 import SearchBar from '../SearchBar/SearchBar';
 import { MdOutlineHotelClass } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
@@ -19,6 +22,7 @@ import { CiParking1 } from "react-icons/ci";
 import { TbAirConditioning } from "react-icons/tb";
 import { IoRestaurantOutline } from "react-icons/io5";
 import { MdKeyboardArrowUp } from "react-icons/md";
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import 'aos/dist/aos.css';
 
 const hotels = [
@@ -310,6 +314,89 @@ const top_amenities = {
 
 const ITEMS_PER_PAGE = 6;
 
+const google_api_key = 'AIzaSyANdye4mgXgKpTvO8-ec3aJshLALV-rAL4'
+
+const Map = () => {
+    const mapStyles = {
+        height: "300px",
+        width: "100%",
+    };
+    const defaultCenter = {
+        lat: 17.9249, 
+        lng: 73.6578, 
+    };
+    return (
+        <LoadScript googleMapsApiKey="AIzaSyANdye4mgXgKpTvO8-ec3aJshLALV-rAL4">
+            <GoogleMap
+                mapContainerStyle={mapStyles}
+                zoom={14}
+                center={defaultCenter}
+            >
+                <Marker position={defaultCenter} />
+            </GoogleMap>
+        </LoadScript>
+    );
+};
+
+const photos = [img, img1, img2, img3, img4, img5, img6, img7, img8]
+
+const PhotosSection = ({ photos }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+
+    const openModal = (index) => {
+        setCurrentPhotoIndex(index);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const showPreviousPhoto = () => {
+        setCurrentPhotoIndex((prevIndex) => (prevIndex - 1 + photos.length) % photos.length);
+    };
+
+    const showNextPhoto = () => {
+        setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
+    };
+
+    return (
+        <div className="photosSection">
+            {/* Thumbnails */}
+            <div className="thumbnails">
+                {photos.map((photo, index) => (
+                    <img
+                        key={index}
+                        src={photo}
+                        alt={`Thumbnail ${index + 1}`}
+                        className="thumbnail"
+                        onClick={() => openModal(index)}
+                    />
+                ))}
+            </div>
+
+            {/* Modal */}
+            {isModalOpen && (
+                <div className="photoModal">
+                    <div className="modalContent">
+                        <button className="closeModal" onClick={closeModal}>
+                            &times;
+                        </button>
+                        <button className="prevPhoto" onClick={showPreviousPhoto}>
+                            &lt;
+                        </button>
+                        <img src={photos[currentPhotoIndex]} alt={`Photo ${currentPhotoIndex + 1}`} className="modalPhoto" />
+                        <button className="nextPhoto" onClick={showNextPhoto}>
+                            &gt;
+                        </button>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
 const HotelDetails = ({ hotels }) => {
     const { id } = useParams();
 
@@ -494,6 +581,12 @@ const HotelDetails = ({ hotels }) => {
                                                         <li key={index}>{room}</li>
                                                     ))}
                                                 </div>
+                                                <div className="amenitiesCategory">
+                                                    <h5>Accessibility</h5>
+                                                    {top_amenities.accessibility.map((accessibility, index) => (
+                                                        <li key={index}>{accessibility}</li>
+                                                    ))}
+                                                </div>
                                             </div>
                                             <button className="toggleBtn" onClick={() => setIsAmenitiesExpanded(false)}>Hide all amenities <MdKeyboardArrowUp /></button>
                                         </div>
@@ -506,17 +599,41 @@ const HotelDetails = ({ hotels }) => {
                                 <div className="card">
                                     <h4>About Gugal Residency Mahabaleshwar</h4>
                                     <p>
-                                        Gugal Residency Mahabaleshwar is a family-friendly budget property outside of Mahabaleshwar. The hotel features spacious rooms with balconies or terraces and lovely views of the nearby mountains.
+                                    Gugal Residency Mahabaleshwar is a family-friendly budget property outside of Mahabaleshwar. The hotel features spacious rooms with balconies or terraces and lovely views of the nearby mountains. Family rooms and deluxe rooms are cleaned daily and feature satellite television, complimentary bottled water, and separate seating and dining areas. Guests can relax in the hotel garden or take in the views from the outside terrace. Open air meeting/event facilities can be booked, while indoor and outdoor games are on offer. On-site parking, complimentary Wi-Fi, luggage storage and laundry facilities are some of the other amenities available. 
                                     </p>
                                     {isAboutExpanded ? (
                                         <div className="expandedContent">
                                             <p>
-                                                Family rooms and deluxe rooms are cleaned daily and feature satellite television, complimentary bottled water, and separate seating and dining areas. Guests can relax in the hotel garden or take in the views from the outside.
+                                            There is a kitchen on site and meals are served during set times. Private dining and room service are available. Lingmala Pure Veg Restaurant is within a short walk. Scenic natural features abound in the area around Gugal Residency Mahabaleshwar. Popular nearby sites include Venna Lake, Elphinstone Point, and Parsi Point, all within ten kilometres of the hotel. Meanwhile, Mapro Garden is less than four kilometres away.
                                             </p>
-                                            <button className="toggleBtn" onClick={() => setIsAboutExpanded(false)}>Show less</button>
+                                            <h5>Arrival / Departure</h5>
+                                            <p>Check in: 12:00</p>
+                                            <p>Check out: 11:00</p>
+                                            <h5>Contact</h5>
+                                            <p>Mahabaleshwar Panchgani Road, Metgutad Village, Near Ganesh Temple,  412806,  Mahabaleshwar,  India</p>
+                                            <p>Telephone: +91 8097809705</p>
+                                            <div className="mapCard">
+                                                <h5>Location</h5>
+                                                <Map />
+                                                {/* <iframe
+                                                    title="Hotel Location"
+                                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.7110659198055!2d73.65567847617446!3d17.92492028232464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc230df312a59e1%3A0x1e86a5caba3a50f9!2sMahabaleshwar%20Temple!5e0!3m2!1sen!2sin!4v1690200000000!5m2!1sen!2sin"
+                                                    width="100%"
+                                                    height="300"
+                                                    style={{
+                                                        border: "0",
+                                                        borderRadius: "8px",
+                                                    }}
+                                                    allowFullScreen
+                                                    loading="lazy"
+                                                    referrerPolicy="no-referrer-when-downgrade"
+                                                ></iframe> */}
+                                            </div>
+                                            
+                                            <button className="toggleBtn" onClick={() => setIsAboutExpanded(false)}>Show less <MdKeyboardArrowUp /></button>
                                         </div>
                                     ) : (
-                                        <button className="toggleBtn" onClick={() => setIsAboutExpanded(true)}>Show all info</button>
+                                        <button className="toggleBtn" onClick={() => setIsAboutExpanded(true)}>Show all info <MdKeyboardArrowDown /></button>
                                     )}
                                 </div>
                             </div>
@@ -531,6 +648,9 @@ const HotelDetails = ({ hotels }) => {
                     )}
                     {activeTab === 'photos' && (
                         <div className="photosTab">
+                            <PhotosSection photos={photos}/>
+
+                           
                             {/* {hotel.photos.map((photo, index) => (
                                 <img key={index} src={photo} alt={`Hotel Photo ${index + 1}`} />
                             ))} */}
