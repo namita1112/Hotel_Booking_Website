@@ -26,7 +26,7 @@
         justify-content: center;
         margin-top: auto;
         padding: 1rem;
-        z-index: 1000;
+        z-index: -1;
     }
 
     .hotelCard{
@@ -447,8 +447,8 @@
                 }
 
                 .modalPhoto {
-                    max-width: 1000px;
-                    max-height: 1000px;
+                    width: 80%;
+                    height: 80%;
                     border-radius: 10px;
                 }
 
@@ -471,17 +471,17 @@
                 }
 
                 .closeModal {
-                    top: 10px;
-                    right: 10px;
+                    top: 25px;
+                    right: 60px;
                     transform: translateY(0);
                 }
                 
                 .prevPhoto {
-                    left: 10px;
+                    left: 50px;
                 }
                 
                 .nextPhoto {
-                    right: 10px;
+                    right: 50px;
                 }
             }
 
@@ -506,6 +506,53 @@
         .review {
             border-bottom: 1px solid #ddd;
             padding: 10px 0;
+        }
+
+        .overallReview {
+            // font-size: 24px;
+            // font-weight: bold;
+            color: var(--blackColor); /* Green for excellent score */
+            text-align: left;
+            margin-bottom: 5px;
+        }
+
+        .guestReviewsTitle {
+            color: var(--blackColor);
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .reviewCards {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Space between cards */
+        }
+
+        .reviewCard {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .reviewContent {
+            max-width: 75%; /* Prevent overlap with date */
+        }
+
+        .reviewScore {
+            color: var(--blackColor); /* Orange for emphasis */
+        }
+
+        .reviewDate {
+            // font-size: 14px;
+            // color: #888;
+            align-self: center; /* Align date vertically in the center */
+            text-align: right;
+            white-space: nowrap;
         }
     }
 

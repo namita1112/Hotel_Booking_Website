@@ -1,0 +1,119 @@
+:root {
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl(187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(201, 33%, 16%);
+  --textColor: hsl(240, 4%, 36%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: rgb(239, 239, 239);
+  --bodyColor: rgb(240, 240, 246);
+  --cardBG: rgb(225, 225, 235);
+  --cardHover: rgb(255, 255, 255);
+}
+
+.reservationPage {
+  padding: 7rem;
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+}
+.reservationPage .progressHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+  position: relative;
+}
+.reservationPage .progressHeader .progressHeader .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+.reservationPage .progressHeader .stepIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+.reservationPage .progressHeader .stepText {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #000;
+  text-align: center;
+}
+.reservationPage .progressHeader .line {
+  height: 2px;
+  background: var(--gradientColor);
+  position: absolute;
+  top: 10px;
+  left: 8%;
+  right: 7%;
+  z-index: -1;
+}
+.reservationPage .reservationContent {
+  display: flex;
+  gap: 20px;
+}
+.reservationPage .reservationContent .hotelDetails {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.reservationPage .reservationContent .hotelDetails h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.reservationPage .reservationContent .hotelDetails p {
+  font-size: 14px;
+  gap: 10px;
+  color: #555;
+}
+.reservationPage .reservationContent .bookingSummary {
+  margin-top: 20px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.reservationPage .reservationContent .bookingSummary h4 {
+  margin-bottom: 10px;
+}
+.reservationPage .reservationContent .userDetails h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.reservationPage .reservationContent .userDetails .note {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 20px;
+}
+.reservationPage .reservationContent .formGroup {
+  margin-bottom: 15px;
+}
+.reservationPage .reservationContent .formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+.reservationPage .reservationContent .formGroup input,
+.reservationPage .reservationContent .formGroup select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.reservationPage .reservationContent .submitBtn {
+  width: 100%;
+  padding: 10px;
+  background: var(--gradientColor);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}/*# sourceMappingURL=reservation.css.map */

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './hoteldetails.css';
 import img from '../../Assets/hotel-view1.jpg';
 import img1 from '../../Assets/hotel-view2.jpg';
@@ -397,8 +398,15 @@ const PhotosSection = ({ photos }) => {
     );
 };
 
+
+
 const HotelDetails = ({ hotels }) => {
     const { id } = useParams();
+    const navigate = useNavigate();
+
+    const handleCardClick = (id) => {
+        navigate(`/hotel/reservation/${id}`);
+    };
 
     // For Pagination
     const [currentPage, setCurrentPage] = useState(1);
@@ -492,7 +500,7 @@ const HotelDetails = ({ hotels }) => {
                 {/* Right Section - Price */}
                 <div className="hotelPrice">
                     <p className="priceInfo">From <strong>₹ 2,234{hotel.price}</strong></p>
-                    <button className="seePricesBtn btn">Reserve</button>
+                    <button onClick={() => handleCardClick(id)} className="seePricesBtn btn">Reserve</button>
                 </div>
             </div>
 
@@ -658,6 +666,40 @@ const HotelDetails = ({ hotels }) => {
                     )}
                     {activeTab === 'reviews' && (
                         <div className="reviewsTab">
+
+                            {/* Overall Review */}
+                            <h3 className="overallReview">9.8 Excellent</h3>
+
+                            {/* Guest Reviews Title */}
+                            <h4 className="guestReviewsTitle">Guest Reviews</h4>
+
+                            {/* Individual Review Cards */}
+                            <div className="reviewCards">
+                                {/* Example card 1 */}
+                                <div className="reviewCard">
+                                    <div className="reviewContent">
+                                        <h4 className="reviewScore">10/10 Exceptional</h4>
+                                        <p className="reviewDesc">
+                                            Amazing resort and a beautiful location. Very helpful staff.
+                                        </p>
+                                    </div>
+                                    <div className="reviewDate">25 Nov 2024</div>
+                                </div>
+
+                                {/* Example card 2 */}
+                                <div className="reviewCard">
+                                    <div className="reviewContent">
+                                        <h4 className="reviewScore">9/10 Wonderful</h4>
+                                        <p className="reviewDesc">
+                                            Great experience overall. The food could have been better.
+                                        </p>
+                                    </div>
+                                    <div className="reviewDate">24 Nov 2024</div>
+                                </div>
+
+                                {/* Add more cards as needed */}
+                            </div>
+
                             {/* {hotel.reviews.map((review, index) => (
                                 <div key={index} className="review">
                                     <p><strong>{review.user}:</strong> {review.comment}</p>

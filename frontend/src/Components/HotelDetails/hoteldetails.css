@@ -26,7 +26,7 @@
   justify-content: center;
   margin-top: auto;
   padding: 1rem;
-  z-index: 1000;
+  z-index: -1;
 }
 .hotelDetails .hotelCard {
   display: flex;
@@ -317,8 +317,8 @@
   align-items: center;
 }
 .hotelDetails .tabContainer .photosTab .photoModal .modalPhoto {
-  max-width: 1000px;
-  max-height: 1000px;
+  width: 80%;
+  height: 80%;
   border-radius: 10px;
 }
 .hotelDetails .tabContainer .photosTab .photoModal .closeModal,
@@ -339,19 +339,55 @@
   align-items: center;
 }
 .hotelDetails .tabContainer .photosTab .photoModal .closeModal {
-  top: 10px;
-  right: 10px;
+  top: 25px;
+  right: 60px;
   transform: translateY(0);
 }
 .hotelDetails .tabContainer .photosTab .photoModal .prevPhoto {
-  left: 10px;
+  left: 50px;
 }
 .hotelDetails .tabContainer .photosTab .photoModal .nextPhoto {
-  right: 10px;
+  right: 50px;
 }
 .hotelDetails .tabContainer .review {
   border-bottom: 1px solid #ddd;
   padding: 10px 0;
+}
+.hotelDetails .tabContainer .overallReview {
+  color: var(--blackColor); /* Green for excellent score */
+  text-align: left;
+  margin-bottom: 5px;
+}
+.hotelDetails .tabContainer .guestReviewsTitle {
+  color: var(--blackColor);
+  text-align: left;
+  margin-bottom: 15px;
+}
+.hotelDetails .tabContainer .reviewCards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between cards */
+}
+.hotelDetails .tabContainer .reviewCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.hotelDetails .tabContainer .reviewContent {
+  max-width: 75%; /* Prevent overlap with date */
+}
+.hotelDetails .tabContainer .reviewScore {
+  color: var(--blackColor); /* Orange for emphasis */
+}
+.hotelDetails .tabContainer .reviewDate {
+  align-self: center; /* Align date vertically in the center */
+  text-align: right;
+  white-space: nowrap;
 }
 .hotelDetails .pagination {
   display: flex;

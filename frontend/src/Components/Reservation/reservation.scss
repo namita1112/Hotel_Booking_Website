@@ -1,0 +1,160 @@
+:root {
+    --PrimaryColor: hsl(199, 100%, 33%);
+    --SecondaryColor: hsl(187, 85%, 43%);
+    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(201, 33%, 16%);
+    --textColor: hsl(240, 4%, 36%);
+    --whiteColorDeam: hsl(0, 0%, 93%);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: rgb(239, 239, 239);
+    --bodyColor: rgb(240, 240, 246);
+    --cardBG: rgb(225, 225, 235);
+    --cardHover: rgb(255, 255, 255);
+}
+
+.reservationPage {
+    padding: 7rem;
+    font-family: Arial, sans-serif;
+    // padding: 20px;
+    max-width: 1200px;
+    // margin: 0 auto;
+
+    .progressHeader {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        align-items: center;
+        position: relative;
+
+        .progressHeader .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+            // flex: 1;
+            // text-align: center;
+            // padding: 10px;
+            // font-size: 16px;
+            // color: #aaa;
+            // border-bottom: 2px solid #ddd;
+        }
+
+        .stepIcon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // width: 30px;
+            // height: 30px;
+            // border-radius: 50%;
+            // background-color: black;
+            // color: white;
+            font-size: 20px;
+            // font-weight: bold;
+        }
+
+        .stepText {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #000;
+            text-align: center;
+        }
+        
+        .line {
+            height: 2px;
+            background: var(--gradientColor);
+            position: absolute;
+            top: 10px;
+            left: 8%;
+            right: 7%;
+            z-index: -1;
+        }
+        
+        // .progressHeader .step.active {
+        //     color: #000;
+        //     font-weight: bold;
+        //     border-bottom: 2px solid #0071c2;
+        // }
+    }
+
+    .reservationContent {
+        display: flex;
+        gap: 20px;
+
+        .hotelDetails {
+            flex: 1;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .hotelDetails h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .hotelDetails p {
+            font-size: 14px;
+            gap: 10px;
+            color: #555;
+        }
+
+        .bookingSummary {
+            margin-top: 20px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .bookingSummary h4 {
+            margin-bottom: 10px;
+        }
+
+        .userDetails h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .userDetails .note {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        
+        .formGroup {
+            margin-bottom: 15px;
+        }
+        
+        .formGroup label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .formGroup input,
+        .formGroup select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .submitBtn {
+            width: 100%;
+            padding: 10px;
+            background: var(--gradientColor);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+
+    }
+
+
+}
